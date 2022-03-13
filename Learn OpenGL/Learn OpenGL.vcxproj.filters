@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Hello Window.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="glad.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
