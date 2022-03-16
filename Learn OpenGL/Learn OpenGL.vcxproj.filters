@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Hello Window.cpp">
+    <ClCompile Include="Tutorial\Hello Window.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="glad.c">
