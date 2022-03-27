@@ -56,8 +56,8 @@ int main()
 	// --------------------
 	// vertex shader
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-	glCompileShader(vertexShader);
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL); // 컴파일하기
+	glCompileShader(vertexShader); 
 
 	int success;
 	char infoLog[512];
@@ -81,6 +81,22 @@ int main()
 		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FALLED\n" << infoLog << std::endl;
 	}
 
+	// link shader
+	unsigned int shaderProgram;
+	shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
+
+	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+	if (!success)
+	{
+		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+	}
+	// 더이상 셰이더 객체는 사용하지 않기 때문에 삭제한다.
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
 	
 	glViewport(0, 0, 800, 600);
 
