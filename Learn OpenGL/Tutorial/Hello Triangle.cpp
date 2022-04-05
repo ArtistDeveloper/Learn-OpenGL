@@ -124,7 +124,7 @@ int main()
 
 	// ..:: Initialization code (done once (unless your object frequently changes)) :: ..
 	// 1. bind Vertex Array Object
-	glBindVertexArray(VAO); // VAO바인딩 이후의 모든 vertex attriubte 호출은 VAO내부에 저장된다.
+	glBindVertexArray(VAO); // VAO바인딩 이후의 모든 vertex attriubte 호출은 VAO내부에 저장된다. EBO도 버퍼 객체로 저장된다.
 	
 	// 2. copy our vertices array in a buffer for OpenGL to use
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -144,6 +144,8 @@ int main()
 
 	//glViewport(0, 0, 800, 600);
 
+	// uncomment this call to draw in wireframe polygons.
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	while (!glfwWindowShouldClose(window))
 	{
